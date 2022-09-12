@@ -2,6 +2,8 @@ const express = require('express')
 const app = new express()
 const router = require('./src/routes/api.js')
 
+const bodyParser = require('body-parser')
+
 //security middleware
 const rateLimit = require('express-rate-limit')
 const helmet = require('helmet')
@@ -9,6 +11,7 @@ const mongoSanitize = require('express-mongo-sanitize')
 const xssClean = require('xss-clean')
 const hpp = require('hpp')
 const cors = require('cors')
+const mongoose = require('mongoose')
 
 
 app.use(helmet())
@@ -16,6 +19,8 @@ app.use(mongoSanitize())
 app.use(xssClean())
 app.use(hpp())
 app.use(cors())
+
+app.use(bodyParser.json())
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
@@ -26,6 +31,14 @@ const limiter = rateLimit({
 
 // Apply the rate limiting middleware to all requests
 app.use(limiter)
+
+//mongodb connection
+let URI = "mongodb://127.0.0.1:27017/schools"
+let OPTION = { user: '', pass: '' }
+mongoose.connect(URI, OPTION, (error) => {
+    console.log("Database Connection Success")
+    console.log(error)
+})
 
 app.use('/api/v1', router)
 
