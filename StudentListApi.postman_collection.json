@@ -1,0 +1,119 @@
+{
+    "info": {
+        "_postman_id": "a220d59f-5907-4717-98f4-cce5ba8a5763",
+        "name": "StudentListApi",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [{
+            "name": "InsertStudent",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"Name\": \"Ashik\",\r\n    \"Roll\": \"33\",\r\n    \"Class\": \"6\",\r\n    \"Remarks\": \"not now\"\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{BASE_URL}}/StudentStore",
+                    "host": [
+                        "{{BASE_URL}}"
+                    ],
+                    "path": [
+                        "StudentStore"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "ReadStudent",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{BASE_URL}}/StudentGetAll",
+                    "host": [
+                        "{{BASE_URL}}"
+                    ],
+                    "path": [
+                        "StudentGetAll"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "UpdateStudent",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"Name\": \"Ashik 545\",\r\n    \"Roll\": \"33\",\r\n    \"Class\": \"6\",\r\n    \"Remarks\": \"not now\"\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{BASE_URL}}/StudentUpdate/631c930c4fb0f06d132186b2",
+                    "host": [
+                        "{{BASE_URL}}"
+                    ],
+                    "path": [
+                        "StudentUpdate",
+                        "631c930c4fb0f06d132186b2"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DeleteStudent",
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "{{BASE_URL}}/StudentDelete/631c930c4fb0f06d132186b2",
+                    "host": [
+                        "{{BASE_URL}}"
+                    ],
+                    "path": [
+                        "StudentDelete",
+                        "631c930c4fb0f06d132186b2"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "event": [{
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        }
+    ],
+    "variable": [{
+        "key": "BASE_URL",
+        "value": "http://localhost:5000/api/V1"
+    }]
+}
